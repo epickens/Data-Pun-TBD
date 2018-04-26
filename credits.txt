@@ -1,0 +1,3 @@
+Massive thanks to Data Science From Scratch
+
+We are using your book as a starting point to re-create the methods laid out in the book
