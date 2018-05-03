@@ -35,4 +35,3 @@ def covar(x, y):
 #correlation
 def corr(x, y):
 
-    
