@@ -1,5 +1,6 @@
 from collections import Counter
 import math, random
+from scipy.stats import norm
 
 def uniform_pdf(x):
     if x < 1 and x >= 0:
@@ -32,7 +33,7 @@ def normal_cdf(x, mu=0, sigma=1):
 
 
 def inverse_normal_cdf(p, mu=0, sigma=1, tolerance=0.00001):
-
+    norm.ppf(p)
 
 
 def bernoulli_trial(p):
