@@ -49,6 +49,7 @@ def sum_of_sqrs(v):
 
     return ssqrs
 
+
 def magnitude(v):
 
     mag = math.sqrt(sum_of_sqrs(v))
@@ -67,10 +68,14 @@ def distance(v, w):
 
     dist = math.sqrt(squared_distance(v, w))
 
-    return  dist
+    return dist
 
 
 def shape(A):
+
+    dimensions = [len(A), len(A[i])]
+
+    return dimensions
 
 
 def get_row(A, i):
@@ -81,15 +86,23 @@ def get_row(A, i):
 
     return row_list
 
+
 def get_column(A, j):
 
     colum_list = []
-    for x in range(0, len(A[j]):
+    for x in range(0, len(A[j])):
         colum_list.append(A[x][j])
 
     return colum_list
 
+
 def make_matrix(num_rows, num_cols, entry_fn):
+
+    for x in range (0, num_cols):
+        for y in range (0, num_rows):
+            new_matrix[x][y] = entry_fn(x, y)
+
+    return new_matrix
 
 
 def is_identity(A):
@@ -104,6 +117,7 @@ def is_identity(A):
                     return False
 
     return True
+
 
 def matrix_add(A, B):
 

@@ -32,7 +32,7 @@ def normal_cdf(x, mu=0, sigma=1):
 
 
 def inverse_normal_cdf(p, mu=0, sigma=1, tolerance=0.00001):
-    
+
 
 
 def bernoulli_trial(p):
