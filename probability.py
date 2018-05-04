@@ -2,6 +2,7 @@ from collections import Counter
 import math, random
 from scipy.stats import norm
 
+
 def uniform_pdf(x):
     if x < 1 and x >= 0:
         return 1
@@ -43,3 +44,15 @@ def bernoulli_trial(p):
 def binomial(p, n):
     sum = sum(bernoulli_trial(p) for _ in range(n))
     return sum
+
+
+def poisson_pdf(lam, k):
+    return lam ^ k * math.exp(-lam)/math.factorial(k)
+
+
+def poisson_cdf(lam, x):
+    cdf = 0
+    for x in range(x, 0):
+        cdf += poisson_pdf(lam, x)
+
+    return cdf
