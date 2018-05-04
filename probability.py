@@ -9,7 +9,6 @@ def uniform_pdf(x):
         return 0
 
 
-
 def uniform_cdf(x):
     if x <= 0:
         return 0
@@ -17,8 +16,6 @@ def uniform_cdf(x):
         return x
     else:
         return 1
-
-
 
 
 def normal_pdf(x, mu=0, sigma=1):
