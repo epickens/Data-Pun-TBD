@@ -2,12 +2,12 @@ from collections import Counter
 import math, random
 from scipy.stats import norm
 
+
 def uniform_pdf(x):
     if x < 1 and x >= 0:
         return 1
     else:
         return 0
-
 
 
 def uniform_cdf(x):
@@ -17,8 +17,6 @@ def uniform_cdf(x):
         return x
     else:
         return 1
-
-
 
 
 def normal_pdf(x, mu=0, sigma=1):
