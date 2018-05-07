@@ -113,3 +113,15 @@ def gamma_cdf(k, theta, x):
     #but I'm not sure how to rn
     #so I'm taking the easy way out
     return gammainc(k, x / theta)
+
+
+def exponential_pdf(lam, x):
+    return lam * math.exp(-1 * lam * x)
+
+
+def exponential_cdf(lam, x):
+    return 1 - exponential_pdf(lam, x)
+
+
+def discrete_expectation(x, p):
+    return dot(x, p)

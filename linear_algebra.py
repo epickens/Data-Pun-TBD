@@ -37,10 +37,12 @@ def vector_mean(vecs):
 
 
 def dot(v, w):
+    if len(v) != len(w):
+        raise ArithmeticError("These vectors are not of the same size")
 
-    sum = (v_i * w_i for v_i, w_i in zip(v, w))
+    dot_sum = (v_i * w_i for v_i, w_i in zip(v, w))
 
-    return sum
+    return dot_sum
 
 
 def sum_of_sqrs(v):
