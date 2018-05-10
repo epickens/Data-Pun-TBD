@@ -62,13 +62,13 @@ def bernoulli_trial(p):
 
 
 def binomial(p, n):
-    sum = sum(bernoulli_trial(p) for _ in range(n))
-    return sum
+    sum_trials = sum(bernoulli_trial(p) for _ in range(n))
+    return sum_trials
 
 
 def geometric_pdf(p, k, failures=False):
     if failures:
-        exp_term = (1- p) ^ k
+        exp_term = (1 - p) ^ k
         return exp_term * p
     else:
         exp_term = (1 - p) ^ (k -1)
