@@ -6,11 +6,6 @@ from collections import defaultdict, Counter
 from functools import partial
 
 
-data = pd.read_csv(sys.argv[1], sep="\t")
-
-print(data.head())
-
-
 def entropy_eqn(probs):
     return sum(-p * math.log(p, 2) for p in probs if p)
 
@@ -34,17 +29,9 @@ def part_entropy(data):
 
 
 def get_partition(data, feature):
-
-    """
-    groups = defaultdict(list)
-    for row in data.iterrows():
-        key = row[['feature']]
-        groups[key].append(row)
-    return groups
-    """
-
     groups = data.groupby(feature)
     return [groups.get_group(x) for x in groups.groups]
+
 
 def get_part_entropy(data, feature):
     partitions = get_partition(data, feature)
@@ -91,13 +78,30 @@ def make_tree(data, splits=None):
 
     future_splits = [s for s in splits if s != best_split]
 
-    child_trees = {subset[[best_split]].values[0][0] : make_tree(subset, future_splits) for subset in partitions}
+    child_trees = {subset[[best_split]].values[0][0]: make_tree(subset, future_splits) for subset in partitions}
 
     child_trees[None] = tot_true > tot_false
 
     return best_split, child_trees
 
 
-print(data.dtypes)
+def classify(tree, input):
+    if tree in [True, False]:
+        return tree
+
+    traversal_key = None
+
+    for key in tree[1].keys():
+        for val in input:
+            if key == val: traversal_key = key
+
+    return classify(tree[1][traversal_key], input)
+
+
+data = pd.read_csv(sys.argv[1], sep="\t")
 tree = make_tree(data)
 print(tree)
+test = data.sample().values[0]
+print(test)
+print(tree[1])
+print(classify(tree, test))
